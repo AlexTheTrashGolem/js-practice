@@ -70,11 +70,13 @@ function submitFormHandler(event){
 }
 function authFormHandler(event){
     event.preventDefault()
+    const errorDiv  = event.target.querySelector('#auth-error-window')
     const regBtn    = event.target.querySelector('#confirm-register')
     const loginBtn  = event.target.querySelector('#confirm-login')
     const email     = event.target.querySelector('#email-input').value
     const pass      = event.target.querySelector('#password').value
     const submitter = event.submitter.id
+    errorDiv.style.display = 'none'
     console.log(submitter)
     loginBtn.disabled = true
     regBtn.disabled = true
@@ -85,6 +87,7 @@ function authFormHandler(event){
                 loginHandler(user)
             })
             .catch((error) => {
+                errorDiv.style.display = "block"
                 if (error.code === AuthErrorCodes.INVALID_PASSWORD){
                     document.getElementById('auth-error-window').innerHTML = "Wrong Password, please try again"
                 }
@@ -102,6 +105,7 @@ function authFormHandler(event){
                 loginHandler(user)
             })
             .catch((error) => {
+                errorDiv.style.display = "block"
                 if (error.code === AuthErrorCodes.INVALID_PASSWORD){
                     document.getElementById('auth-error-window').innerHTML = "Wrong Password, please try again"
                 }
