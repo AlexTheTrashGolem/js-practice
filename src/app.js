@@ -70,7 +70,7 @@ function submitFormHandler(event){
 }
 function authFormHandler(event){
     event.preventDefault()
-    const errorDiv  = event.target.querySelector('#auth-error-window')
+    const errorDiv  = document.getElementById('auth-error-window')
     const regBtn    = event.target.querySelector('#confirm-register')
     const loginBtn  = event.target.querySelector('#confirm-login')
     const email     = event.target.querySelector('#email-input').value
@@ -89,10 +89,10 @@ function authFormHandler(event){
             .catch((error) => {
                 errorDiv.style.display = "block"
                 if (error.code === AuthErrorCodes.INVALID_PASSWORD){
-                    document.getElementById('auth-error-window').innerHTML = "Wrong Password, please try again"
+                    errorDiv.innerHTML = "Wrong Password, please try again"
                 }
                 else {
-                    document.getElementById('auth-error-window').innerHTML = `Error: ${error.message}`
+                    errorDiv.innerHTML = `Error: ${error.message}`
                 }
                 loginBtn.disabled = false
                 regBtn.disabled = false
@@ -107,10 +107,10 @@ function authFormHandler(event){
             .catch((error) => {
                 errorDiv.style.display = "block"
                 if (error.code === AuthErrorCodes.INVALID_PASSWORD){
-                    document.getElementById('auth-error-window').innerHTML = "Wrong Password, please try again"
+                    errorDiv.innerHTML = "Wrong Password, please try again"
                 }
                 else {
-                    document.getElementById('auth-error-window').innerHTML = `Error: ${error.message}`
+                    errorDiv.innerHTML = `Error: ${error.message}`
                 }
                 loginBtn.disabled = false
                 regBtn.disabled = false
