@@ -1,0 +1,2 @@
+This is a practice project I made while watching this video:https://youtu.be/KS2ngnRAKlg, feel free to leave your advices and other feedback.
+I modified it by adding firebase authentication, feature for admin allowing to answer questions, and feature for users to see the answer for their questions. 
